@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
+import Styles from "../styles/Home.module.css";
 
 const about = () => {
-    return (
-        <div>
-            <h1>Bienvenido User</h1>
-        </div>
-    )
-}
+  return (
+    <div className={Styles.container}>
+      <main className={Styles.main}>
+        <h1 className={Styles.title}>
+          Bienvenido <a>Humano</a>
+        </h1>
+      </main>
+    </div>
+  );
+};
 
-export default about
+export default about;
