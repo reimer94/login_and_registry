@@ -1,65 +1,123 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import React, { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    const sign_in_btn = document.querySelector("#sign-in-btn");
+    const sign_up_btn = document.querySelector("#sign-up-btn");
+    const container = document.querySelector(".container");
+
+    sign_up_btn.addEventListener("click", () => {
+      container.classList.add("sign-up-mode");
+    });
+
+    sign_in_btn.addEventListener("click", () => {
+      container.classList.remove("sign-up-mode");
+    });
+  }, []);
+
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+          src="https://kit.fontawesome.com/64d58efce2.js"
+          crossOrigin="anonymous"
+        ></script>
+        <title>Sistema de reservación</title>
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <div className="container">
+        <div className="forms-container">
+          <div className="signin-signup">
+            <form action="/about" className="sign-in-form">
+              <h2 className="title">Inicia sesión</h2>
+              <div className="input-field">
+                <i className="fas fa-user"></i>
+                <input type="text" placeholder="Usuario" />
+              </div>
+              <div className="input-field">
+                <i className="fas fa-lock"></i>
+                <input type="password" placeholder="Contraseña" />
+              </div>
+              <input type="submit" value="Iniciar" className="btn solid" />
+              <p className="social-text">Iniciar con plataformas sociales</p>
+              <div className="social-media">
+                <a href="#" className="social-icon">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" className="social-icon">
+                  <i className="fab fa-twitter"></i>
+                </a>
+                <a href="#" className="social-icon">
+                  <i className="fab fa-google"></i>
+                </a>
+                <a href="#" className="social-icon">
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </form>
+            <form action="#" className="sign-up-form">
+              <h2 className="title">Registrarse</h2>
+              <div className="input-field">
+                <i className="fas fa-user"></i>
+                <input type="text" placeholder="Usuario" />
+              </div>
+              <div className="input-field">
+                <i className="fas fa-envelope"></i>
+                <input type="email" placeholder="Correo electrónico" />
+              </div>
+              <div className="input-field">
+                <i className="fas fa-lock"></i>
+                <input type="password" placeholder="Contraseña" />
+              </div>
+              <input type="submit" className="btn" value="Registrar" />
+              <p className="social-text">Registrarse con plataformas sociales</p>
+              <div className="social-media">
+                <a href="#" className="social-icon">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" className="social-icon">
+                  <i className="fab fa-twitter"></i>
+                </a>
+                <a href="#" className="social-icon">
+                  <i className="fab fa-google"></i>
+                </a>
+                <a href="#" className="social-icon">
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </form>
+          </div>
         </div>
-      </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+        <div className="panels-container">
+          <div className="panel left-panel">
+            <div className="content">
+              <h3>Eres nuevo ?</h3>
+              <p>
+                Puedes crear tu cuenta en este instante para comenzar a reservar!!
+              </p>
+              <button className="btn transparent" id="sign-up-btn">
+                Registrar
+              </button>
+            </div>
+            <img src="/log.svg" className="image" alt="" />
+          </div>
+          <div className="panel right-panel">
+            <div className="content">
+              <h3>Ya tienes una cuenta ?</h3>
+              <p>
+               Inicia sesión para gestionar tus reservas!
+              </p>
+              <button className="btn transparent" id="sign-in-btn">
+                Iniciar
+              </button>
+            </div>
+            <img src="/register.svg" className="image" alt="" />
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
